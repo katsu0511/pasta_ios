@@ -15,6 +15,7 @@
 		A599E6562C1D43F800B29F50 /* PastaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A599E6552C1D43F800B29F50 /* PastaTests.swift */; };
 		A599E6602C1D43F800B29F50 /* PastaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A599E65F2C1D43F800B29F50 /* PastaUITests.swift */; };
 		A599E6622C1D43F800B29F50 /* PastaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A599E6612C1D43F800B29F50 /* PastaUITestsLaunchTests.swift */; };
+		A599E66F2C1D6E3D00B29F50 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A599E66E2C1D6E3D00B29F50 /* SoundPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A599E65B2C1D43F800B29F50 /* PastaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PastaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A599E65F2C1D43F800B29F50 /* PastaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastaUITests.swift; sourceTree = "<group>"; };
 		A599E6612C1D43F800B29F50 /* PastaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A599E66E2C1D6E3D00B29F50 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				A599E6472C1D43F800B29F50 /* Assets.xcassets */,
 				A599E6492C1D43F800B29F50 /* Pasta.entitlements */,
 				A599E64A2C1D43F800B29F50 /* Preview Content */,
+				A599E66E2C1D6E3D00B29F50 /* SoundPlayer.swift */,
 			);
 			path = Pasta;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				A599E6442C1D43F600B29F50 /* ContentView.swift in Sources */,
 				A599E6462C1D43F600B29F50 /* Item.swift in Sources */,
+				A599E66F2C1D6E3D00B29F50 /* SoundPlayer.swift in Sources */,
 				A599E6422C1D43F600B29F50 /* PastaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
