@@ -16,6 +16,22 @@ class SoundPlayer: NSObject {
         }
     }
     
+    func pauseMusic() {
+        music_player?.pause()
+    }
+    
+    func stopMusic() {
+        music_player?.stop()
+    }
+    
+    func backwardMusic() {
+        music_player?.currentTime -= 10
+    }
+    
+    func forwardMusic() {
+        music_player?.currentTime += 10
+    }
+    
     func pasta() {
         do {
             pasta_player = try AVAudioPlayer(data: pasta_data)
@@ -23,9 +39,5 @@ class SoundPlayer: NSObject {
         } catch {
             print("エラー発生.音を流せません")
         }
-    }
-    
-    func stopMusic() {
-        music_player?.stop()
     }
 }
