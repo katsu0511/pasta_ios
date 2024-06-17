@@ -27,15 +27,18 @@ struct ContentView: View {
         VStack {
             HStack {
                 Spacer().frame(width: 16)
-                Slider(value: $seekPosition, in: 0...1)
+                Slider(
+                    value: $seekPosition,
+                    in: 0...1
+                )
                 Spacer().frame(width: 16)
             }
 
             HStack {
                 Spacer().frame(width: 16)
-                Text(player.getMinute(sec: Int(player.musicPlayer.duration * seekPosition)))
+                Text(player.getMinute(sec: Int(round(player.musicPlayer.duration * seekPosition))))
                 Spacer()
-                Text("-" + player.getMinute(sec: Int(player.musicPlayer.duration * (1 - seekPosition))))
+                Text("-" + player.getMinute(sec: Int(round(player.musicPlayer.duration * (1 - seekPosition)))))
                 Spacer().frame(width: 16)
             }
 
@@ -45,7 +48,11 @@ struct ContentView: View {
                 Button(action: {
                     if (!isBackwardDisabled) {
                         player.backwardMusic()
-                        seekPosition -= 5 / player.musicPlayer.duration
+                        if (seekPosition > 5 / player.musicPlayer.duration) {
+                            seekPosition -= 5 / player.musicPlayer.duration
+                        } else {
+                            seekPosition = 0
+                        }
                     }
                 }) {
                     Image(backwardButton)
@@ -99,7 +106,11 @@ struct ContentView: View {
                 Button(action: {
                     if (!isForwardDisabled) {
                         player.forwardMusic()
-                        seekPosition += 5 / player.musicPlayer.duration
+                        if (1 - seekPosition > 5 / player.musicPlayer.duration) {
+                            seekPosition += 5 / player.musicPlayer.duration
+                        } else {
+                            seekPosition = 1
+                        }
                     }
                 }) {
                     Image(forwardButton)
