@@ -24,7 +24,13 @@ struct ContentView: View {
                         .frame(width: 80, height: 80)
                 }
                 Button(action: {
-                    player.playMusic()
+                    if (playButton == "play") {
+                        player.playMusic()
+                        playButton = "pause"
+                    } else if (playButton == "pause") {
+                        player.pauseMusic()
+                        playButton = "play"
+                    }
                 }) {
                     Image(playButton)
                         .resizable()
