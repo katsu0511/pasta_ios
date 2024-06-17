@@ -2,18 +2,24 @@ import UIKit
 import AVFoundation
 
 class SoundPlayer: NSObject {
-    let music_data = NSDataAsset(name: "full")!.data
-    let pasta_data = NSDataAsset(name: "pasta")!.data
+    var music_data: Data!
+    var pasta_data: Data!
     var music_player: AVAudioPlayer!
     var pasta_player: AVAudioPlayer!
     
-    func playMusic() {
+    override init() {
         do {
+            music_data = NSDataAsset(name: "full")!.data
+            pasta_data = NSDataAsset(name: "pasta")!.data
             music_player = try AVAudioPlayer(data: music_data)
-            music_player.play()
+            pasta_player = try AVAudioPlayer(data: pasta_data)
         } catch {
-            print("エラー発生.音を流せません")
+            print("load error")
         }
+    }
+    
+    func playMusic() {
+        music_player.play()
     }
     
     func pauseMusic() {
@@ -33,11 +39,6 @@ class SoundPlayer: NSObject {
     }
     
     func pasta() {
-        do {
-            pasta_player = try AVAudioPlayer(data: pasta_data)
-            pasta_player.play()
-        } catch {
-            print("エラー発生.音を流せません")
-        }
+        pasta_player.play()
     }
 }
