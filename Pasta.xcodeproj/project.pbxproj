@@ -49,6 +49,7 @@
 		A599E65F2C1D43F800B29F50 /* PastaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastaUITests.swift; sourceTree = "<group>"; };
 		A599E6612C1D43F800B29F50 /* PastaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A599E66E2C1D6E3D00B29F50 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		A599E6702C1FC49900B29F50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +100,7 @@
 		A599E6402C1D43F600B29F50 /* Pasta */ = {
 			isa = PBXGroup;
 			children = (
+				A599E6702C1FC49900B29F50 /* Info.plist */,
 				A599E6412C1D43F600B29F50 /* PastaApp.swift */,
 				A599E6432C1D43F600B29F50 /* ContentView.swift */,
 				A599E6452C1D43F600B29F50 /* Item.swift */,
@@ -432,6 +434,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pasta/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -470,6 +473,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pasta/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
