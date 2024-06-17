@@ -54,7 +54,7 @@ struct ContentView: View {
             Button(action: {
                 player.pasta()
             }) {
-                Text("pasta")
+                Text("Pasta")
                     .padding(.init(top: 20, leading: 90, bottom: 20, trailing: 90))
                     .background(.green)
                     .foregroundColor(.white)
