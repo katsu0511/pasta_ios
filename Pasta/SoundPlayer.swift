@@ -6,7 +6,7 @@ class SoundPlayer: NSObject {
     var pastaData: Data!
     var musicPlayer: AVAudioPlayer!
     var pastaPlayer: AVAudioPlayer!
-    
+
     override init() {
         do {
             musicData = NSDataAsset(name: "full")!.data
@@ -14,30 +14,30 @@ class SoundPlayer: NSObject {
             musicPlayer = try AVAudioPlayer(data: musicData)
             pastaPlayer = try AVAudioPlayer(data: pastaData)
         } catch {
-            print("load error")
+            print("Load Error")
         }
     }
-    
+
     func playMusic() {
         musicPlayer.play()
     }
-    
+
     func pauseMusic() {
         musicPlayer?.pause()
     }
-    
+
     func stopMusic() {
         musicPlayer?.stop()
     }
-    
+
     func backwardMusic() {
         musicPlayer?.currentTime -= 10
     }
-    
+
     func forwardMusic() {
         musicPlayer?.currentTime += 10
     }
-    
+
     func pasta() {
         pastaPlayer.play()
     }
