@@ -1,18 +1,21 @@
 import UIKit
 import AVFoundation
 
-class SoundPlayer: NSObject {
+class SoundPlayer: NSObject, AVAudioPlayerDelegate {
     var musicData: Data!
     var pastaData: Data!
     var musicPlayer: AVAudioPlayer!
     var pastaPlayer: AVAudioPlayer!
 
     override init() {
+        super.init()
+
         do {
             musicData = NSDataAsset(name: "full")!.data
             pastaData = NSDataAsset(name: "pasta")!.data
             musicPlayer = try AVAudioPlayer(data: musicData)
             pastaPlayer = try AVAudioPlayer(data: pastaData)
+            pastaPlayer.delegate = self
         } catch {
             print("Load Error")
         }
@@ -40,6 +43,11 @@ class SoundPlayer: NSObject {
     }
 
     func pasta() {
+        musicPlayer.volume = 0
         pastaPlayer.play()
+    }
+
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        musicPlayer.volume = 1
     }
 }
