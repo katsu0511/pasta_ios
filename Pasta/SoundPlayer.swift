@@ -11,14 +11,18 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
         super.init()
 
         do {
-            musicData = NSDataAsset(name: "full")!.data
-            pastaData = NSDataAsset(name: "pasta")!.data
-            musicPlayer = try AVAudioPlayer(data: musicData)
-            pastaPlayer = try AVAudioPlayer(data: pastaData)
-            pastaPlayer.delegate = self
-        } catch {
-            print("Load Error")
-        }
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+                musicData = NSDataAsset(name: "full")!.data
+                pastaData = NSDataAsset(name: "pasta")!.data
+                musicPlayer = try AVAudioPlayer(data: musicData)
+                pastaPlayer = try AVAudioPlayer(data: pastaData)
+                pastaPlayer.delegate = self
+            } catch {
+                print("Load Error")
+            }
+        } catch _ as NSError {}
     }
 
     func playMusic() {
