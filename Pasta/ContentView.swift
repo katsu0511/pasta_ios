@@ -9,44 +9,81 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    let player = SoundPlayer()
     @State private var playButton = "play"
+    @State private var isStopDisabled = true
+    @State private var stopButton = "invalid_stop"
+    @State private var isBackwardDisabled = true
+    @State private var backwardButton = "invalid_backward"
+    @State private var isForwardDisabled = true
+    @State private var forwardButton = "invalid_forward"
+    let player = SoundPlayer()
 
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-                    player.backwardMusic()
+                    if (!isBackwardDisabled) {
+                        player.backwardMusic()
+                    }
                 }) {
-                    Image("backward")
+                    Image(backwardButton)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 80, height: 80)
                 }
+                .disabled(isBackwardDisabled)
+
                 Button(action: {
-                    player.playMusic()
+                    if (playButton == "play") {
+                        player.playMusic()
+                        playButton = "pause"
+                        isStopDisabled = false
+                        stopButton = "stop"
+                        isBackwardDisabled = false
+                        backwardButton = "backward"
+                        isForwardDisabled = false
+                        forwardButton = "forward"
+                    } else if (playButton == "pause") {
+                        player.pauseMusic()
+                        playButton = "play"
+                    }
                 }) {
                     Image(playButton)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 80, height: 80)
                 }
+
                 Button(action: {
-                    player.stopMusic()
+                    if (!isStopDisabled) {
+                        player.stopMusic()
+                        playButton = "play"
+                        isStopDisabled = true
+                        stopButton = "invalid_stop"
+                        isBackwardDisabled = true
+                        backwardButton = "invalid_backward"
+                        isForwardDisabled = true
+                        forwardButton = "invalid_forward"
+                    }
                 }) {
-                    Image("stop")
+                    Image(stopButton)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 80, height: 80)
                 }
+                .disabled(isStopDisabled)
+
                 Button(action: {
-                    player.forwardMusic()
+                    if (!isForwardDisabled) {
+                        player.forwardMusic()
+                    }
                 }) {
-                    Image("forward")
+                    Image(forwardButton)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 80, height: 80)
                 }
+                .disabled(isForwardDisabled)
             }
 
             Spacer().frame(height: 32)

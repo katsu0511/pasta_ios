@@ -37,11 +37,11 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
     }
 
     func backwardMusic() {
-        musicPlayer?.currentTime -= 10
+        musicPlayer?.currentTime -= 5
     }
 
     func forwardMusic() {
-        musicPlayer?.currentTime += 10
+        musicPlayer?.currentTime += 5
     }
 
     func pasta() {
