@@ -16,14 +16,32 @@ struct ContentView: View {
     @State private var backwardButton = "invalid_backward"
     @State private var isForwardDisabled = true
     @State private var forwardButton = "invalid_forward"
+    @State private var seekPosition: Double = 0.0
     let player = SoundPlayer()
 
     var body: some View {
         VStack {
             HStack {
+                Spacer().frame(width: 16)
+                Slider(value: $seekPosition, in: 0...1)
+                Spacer().frame(width: 16)
+            }
+
+            HStack {
+                Spacer().frame(width: 16)
+                Text(player.getMinute(sec: Int(player.musicPlayer.duration * seekPosition)))
+                Spacer()
+                Text("-" + player.getMinute(sec: Int(player.musicPlayer.duration * (1 - seekPosition))))
+                Spacer().frame(width: 16)
+            }
+
+            Spacer().frame(height: 32)
+
+            HStack {
                 Button(action: {
                     if (!isBackwardDisabled) {
                         player.backwardMusic()
+                        seekPosition -= 5 / player.musicPlayer.duration
                     }
                 }) {
                     Image(backwardButton)
@@ -57,6 +75,7 @@ struct ContentView: View {
                 Button(action: {
                     if (!isStopDisabled) {
                         player.stopMusic()
+                        seekPosition = 0.0
                         playButton = "play"
                         isStopDisabled = true
                         stopButton = "invalid_stop"
@@ -76,6 +95,7 @@ struct ContentView: View {
                 Button(action: {
                     if (!isForwardDisabled) {
                         player.forwardMusic()
+                        seekPosition += 5 / player.musicPlayer.duration
                     }
                 }) {
                     Image(forwardButton)

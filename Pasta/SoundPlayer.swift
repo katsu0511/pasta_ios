@@ -52,4 +52,21 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         musicPlayer.volume = 1
     }
+    
+    func getMinute(sec: Int) -> String {
+        var minute = 0
+        var second = sec
+        var secondStr = ""
+        while(second >= 60) {
+            minute += 1
+            second -= 60
+        }
+        if (second < 10) {
+            secondStr = "0\(second)"
+        } else {
+            secondStr = "\(second)"
+        }
+
+        return "\(minute):\(secondStr)"
+    }
 }
