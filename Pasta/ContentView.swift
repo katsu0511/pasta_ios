@@ -9,14 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    let musicplayer = SoundPlayer()
+    let player = SoundPlayer()
     @State private var playButton = "play"
 
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-                    musicplayer.backwardMusic()
+                    player.backwardMusic()
                 }) {
                     Image("backward")
                         .resizable()
@@ -24,7 +24,7 @@ struct ContentView: View {
                         .frame(width: 80, height: 80)
                 }
                 Button(action: {
-                    musicplayer.playMusic()
+                    player.playMusic()
                 }) {
                     Image(playButton)
                         .resizable()
@@ -32,7 +32,7 @@ struct ContentView: View {
                         .frame(width: 80, height: 80)
                 }
                 Button(action: {
-                    musicplayer.stopMusic()
+                    player.stopMusic()
                 }) {
                     Image("stop")
                         .resizable()
@@ -40,7 +40,7 @@ struct ContentView: View {
                         .frame(width: 80, height: 80)
                 }
                 Button(action: {
-                    musicplayer.forwardMusic()
+                    player.forwardMusic()
                 }) {
                     Image("forward")
                         .resizable()
@@ -52,9 +52,9 @@ struct ContentView: View {
             Spacer().frame(height: 32)
 
             Button(action: {
-                musicplayer.pasta()
+                player.pasta()
             }) {
-                Text("pasta")
+                Text("Pasta")
                     .padding(.init(top: 20, leading: 90, bottom: 20, trailing: 90))
                     .background(.green)
                     .foregroundColor(.white)

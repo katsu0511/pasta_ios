@@ -1,43 +1,55 @@
 import UIKit
 import AVFoundation
 
-class SoundPlayer: NSObject {
-    let music_data = NSDataAsset(name: "full")!.data
-    let pasta_data = NSDataAsset(name: "pasta")!.data
-    var music_player: AVAudioPlayer!
-    var pasta_player: AVAudioPlayer!
-    
+class SoundPlayer: NSObject, AVAudioPlayerDelegate {
+    var musicData: Data!
+    var pastaData: Data!
+    var musicPlayer: AVAudioPlayer!
+    var pastaPlayer: AVAudioPlayer!
+
+    override init() {
+        super.init()
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            musicData = NSDataAsset(name: "full")!.data
+            pastaData = NSDataAsset(name: "pasta")!.data
+            musicPlayer = try AVAudioPlayer(data: musicData)
+            pastaPlayer = try AVAudioPlayer(data: pastaData)
+            pastaPlayer.delegate = self
+        } catch {
+            print("Load Error")
+        }
+    }
+
     func playMusic() {
-        do {
-            music_player = try AVAudioPlayer(data: music_data)
-            music_player.play()
-        } catch {
-            print("エラー発生.音を流せません")
-        }
+        musicPlayer.play()
     }
-    
+
     func pauseMusic() {
-        music_player?.pause()
+        musicPlayer?.pause()
     }
-    
+
     func stopMusic() {
-        music_player?.stop()
+        musicPlayer?.stop()
+        musicPlayer?.currentTime = 0
     }
-    
+
     func backwardMusic() {
-        music_player?.currentTime -= 10
+        musicPlayer?.currentTime -= 10
     }
-    
+
     func forwardMusic() {
-        music_player?.currentTime += 10
+        musicPlayer?.currentTime += 10
     }
-    
+
     func pasta() {
-        do {
-            pasta_player = try AVAudioPlayer(data: pasta_data)
-            pasta_player.play()
-        } catch {
-            print("エラー発生.音を流せません")
-        }
+        musicPlayer.volume = 0
+        pastaPlayer.play()
+    }
+
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        musicPlayer.volume = 1
     }
 }
