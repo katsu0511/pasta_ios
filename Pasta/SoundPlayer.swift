@@ -28,7 +28,7 @@ class SoundPlayer: NSObject {
 
     func stopMusic() {
         musicPlayer?.stop()
-        musicPlayer.currentTime = 0
+        musicPlayer?.currentTime = 0
     }
 
     func backwardMusic() {
