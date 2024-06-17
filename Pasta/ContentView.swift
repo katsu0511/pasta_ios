@@ -29,7 +29,10 @@ struct ContentView: View {
                 Spacer().frame(width: 16)
                 Slider(
                     value: $seekPosition,
-                    in: 0...1
+                    in: 0...1,
+                    onEditingChanged: { _ in
+                        player.musicPlayer.currentTime = seekPosition * player.musicPlayer.duration
+                    }
                 )
                 .onReceive(player.timer) { _ in
                     if (player.musicPlayer.isPlaying) {
