@@ -19,6 +19,10 @@ struct ContentView: View {
     @State private var seekPosition: Double = 0.0
     let player = SoundPlayer()
 
+    init() {
+        UISlider.appearance().thumbTintColor = .systemBlue
+    }
+
     var body: some View {
         VStack {
             HStack {
