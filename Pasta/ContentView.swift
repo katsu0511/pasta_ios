@@ -31,6 +31,13 @@ struct ContentView: View {
                     value: $seekPosition,
                     in: 0...1
                 )
+                .onReceive(player.timer) { _ in
+                    if (player.musicPlayer.isPlaying) {
+                        seekPosition = player.musicPlayer.currentTime / player.musicPlayer.duration
+                    } else {
+                        player.stopMusic()
+                    }
+                }
                 Spacer().frame(width: 16)
             }
 
@@ -65,6 +72,7 @@ struct ContentView: View {
                 Button(action: {
                     if (playButton == "play") {
                         player.playMusic()
+                        player.startTimer()
                         playButton = "pause"
                         isStopDisabled = false
                         stopButton = "stop"
@@ -74,6 +82,7 @@ struct ContentView: View {
                         forwardButton = "forward"
                     } else if (playButton == "pause") {
                         player.pauseMusic()
+                        player.stopMusic()
                         playButton = "play"
                     }
                 }) {
@@ -87,6 +96,7 @@ struct ContentView: View {
                     if (!isStopDisabled) {
                         player.stopMusic()
                         seekPosition = 0.0
+                        player.stopMusic()
                         playButton = "play"
                         isStopDisabled = true
                         stopButton = "invalid_stop"

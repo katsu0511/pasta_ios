@@ -6,6 +6,7 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
     var pastaData: Data!
     var musicPlayer: AVAudioPlayer!
     var pastaPlayer: AVAudioPlayer!
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     override init() {
         super.init()
@@ -68,5 +69,13 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
         }
 
         return "\(minute):\(secondStr)"
+    }
+
+    func startTimer() {
+        timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    }
+
+    func stopTimer() {
+        timer.upstream.connect().cancel()
     }
 }
